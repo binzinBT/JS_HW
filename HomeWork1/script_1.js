@@ -24,47 +24,53 @@
 // функия start_1 используется для запуска скрипта в index.html 
 function start_1() {
 
-	var arr = [];
-	var n = Math.floor( Math.random() * (13 - 10) + 10 );
+	var arrTest = [];
+	var lengthArr = Math.floor( Math.random() * (13 - 10) + 10 );
 	
-	for (var ii = 0; ii < n; ii++){
-		arr[ii] = Math.floor( Math.random() * (99 - 10) + 10  );
+	for (var i = 0; i < lengthArr; i++){
+		arrTest[i] = Math.floor( Math.random() * (99 - 10) + 10  );
 	}
-	console.log("Исх. масив: " + arr);
-	
-	function quickSort( firstEl, lastEl ){
+	console.log("Исх. масив: " + arrTest);
+
+	function swapElemenArr(arrSwap, firstIndex, secondIndex){
 		var tmp = 0;
+
+		tmp = arrSwap[firstIndex];
+		arrSwap[firstIndex] = arrSwap[secondIndex];
+		arrSwap[secondIndex] = tmp;
+	}
+	
+	function quickSort( arr, firstEl, lastEl ){
 		var i = firstEl;
 		var j = lastEl;
 		var pivot = arr[lastEl];
+
 		while ( i <= j ) {
 			while ( arr[i] < pivot ){
 				i++;
 			}
+
 			while ( arr[j] > pivot ){
 				j--;
 			}
 
 			if ( i <= j ) {
-				tmp = arr[i];
-				arr[i] = arr[j];
-				arr[j] = tmp;
+				swapElemenArr(arr, i, j);
 				i++;
 				j--;
 			}
 		}
 		
 		if ( i < lastEl ){
-			quickSort( i, lastEl );
+			quickSort(arr, i, lastEl );
 		}
 		if ( j > firstEl ){
-			quickSort( firstEl, j );
+			quickSort(arr, firstEl, j );
 		}
-
 	}	
 
-	quickSort(0, arr.length-1);
-	console.log("Результат:  " + arr);
+ 	quickSort(arrTest, 0, arrTest.length-1);
+	console.log("Результат:  " + arrTest);
 	
 }
 
