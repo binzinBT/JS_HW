@@ -9,8 +9,6 @@ var Room = function() {
     Power.call( this );
     Insp.aggregation( Room, Power);
 
-    //Ilumination.call(this, 0, 10);
-    //Insp.aggregation(Room, Ilumination);
   }
 
   Room.prototype.addDevice = function( device ) {

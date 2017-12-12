@@ -1,23 +1,30 @@
 "use strict";
-var Ilumination = function () {
-  function Ilumination( minPL, maxPL) {
-    Insp._classCallCheck( this, Ilumination);
+function Illumination( power, load) {
+  this.power = power;
+  this.deviceLoad = load;
+}
 
-    Power.call(this);
-    Insp.aggregation(Ilumination, Power);
+Illumination.prototype.powerOn = function() {
+  this.power.powerOn();
+};
 
-    DeviceLoad.call(this, minPL, maxPL);
-    Insp.aggregation(Ilumination, DeviceLoad);
-  }
+Illumination.prototype.powerOff = function () {
+  this.powerOff();
+};
 
-  return Ilumination;
-}();
+Illumination.prototype.getPowerStatus = function () {
+  this.power.getPowerStatus();
+};
 
+Illumination.prototype.setLoad = function ( newLoad ) {
+  this.deviceLoad.setDeviceLoad( newLoad );
+};
 
+Illumination.prototype.loadIncrease = function () {
+  this.deviceLoad.loadDeviceIncrease();
+};
 
-var il = new Ilumination( 0, 10 );
+Illumination.prototype.loadDecrease = function () {
+  this.deviceLoad.loadDeviceDecrease();
+};
 
-console.log(il._currentPowLoad);
-il.loadDeviceIncrease();
-il.setDeviceLoad(9);
-console.dir(il);
